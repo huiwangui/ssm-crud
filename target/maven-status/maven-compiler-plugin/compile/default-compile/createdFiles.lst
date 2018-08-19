@@ -1,0 +1,13 @@
+com\hxjc\bdss\ss\model\Department.class
+com\hxjc\bdss\ss\service\impl\DepartmentServiceImpl.class
+com\hxjc\bdss\ss\controller\DepartmentController.class
+com\hxjc\bdss\ss\service\EmployeeService.class
+com\hxjc\bdss\ss\service\DepartmentService.class
+com\hxjc\bdss\ss\service\impl\EmployeeServiceImpl.class
+com\hxjc\bdss\ss\dao\DepartmentDao.class
+com\hxjc\bdss\common\annotation\MyBatisDao.class
+com\hxjc\bdss\ss\controller\EmployeeController.class
+com\hxjc\bdss\common\util\Msg.class
+com\hxjc\bdss\ss\dao\EmployeeDao.class
+com\hxjc\bdss\ss\model\Employee.class
+com\hxjc\bdss\ss\vo\EmployeeVo.class
