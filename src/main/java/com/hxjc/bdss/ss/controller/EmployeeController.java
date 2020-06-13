@@ -41,7 +41,7 @@ public class EmployeeController {
 	 * 单个批量二合一
 	 * 批量删除：1-2-3
 	 * 单个删除：1
-	 * @param id
+	 * @param ids
 	 * @return
 	 */
 	@ResponseBody
@@ -49,7 +49,7 @@ public class EmployeeController {
 	public Msg deleteEmpById(@PathVariable("ids")String ids){
 		//批量删除
 		if(ids.contains("-")){
-			List<Integer> list = new ArrayList<>();			
+			List<Integer> list = new ArrayList<Integer>();
 			String[] strs = ids.split("-");
 			for (String str : strs) {
 				list.add(Integer.parseInt(str));				
@@ -147,7 +147,7 @@ public class EmployeeController {
 	public Msg saveEmp(@Valid Employee employee,BindingResult result){
 		if(result.hasErrors()){
 			//校验失败，应该返回失败，在模态框中显示校验失败的错误信息
-			Map<String, Object> map = new HashMap<>();
+			Map<String, Object> map = new HashMap<String, Object>();
 			List<FieldError> fieldErrors = result.getFieldErrors();
 			for (FieldError fieldError : fieldErrors) {
 				map.put(fieldError.getField(), fieldError.getDefaultMessage());
