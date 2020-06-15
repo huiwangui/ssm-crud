@@ -14,20 +14,21 @@
            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd 
            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
      
-  	<!-- 注解扫描的包 -->
+  	<!--   开启扫描类中的注解  -->
 	<context:component-scan base-package="com.hxjc.bdss">
 	 	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
-	
+
+	<!-- 注册jdbc属性文件-->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
     <!-- 注册 数据源：C3P0数据源 	  -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-    	<property name="driverClass" value="${jdbc.driver}"></property>
-    	<property name="jdbcUrl" value="${jdbc.url}"></property>
-    	<property name="user" value="${jdbc.user}"></property>
-    	<property name="password" value="${jdbc.password}"></property>
+		<property name="driverClass" value="${jdbc.driver}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
     </bean>
-    <!-- 注册jdbc属性文件 -->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+
      
     <!-- 配置和Mybatis的整合 -->   
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -43,10 +44,7 @@
 	<bean  class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		 <!--扫描所有dao接口的实现，加入到ioc容器中  -->
 		 <property name="basePackage" value="com.hxjc.bdss.ss.dao" />
-		 <!-- 
-		 <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-		 <property name="annotationClass" value="com.hxjc.bdss.common.annotation.MyBatisDao" />
-	      -->
+
 	</bean> 
 	
 	<!-- 配置一个可以执行批量的sqlSession -->

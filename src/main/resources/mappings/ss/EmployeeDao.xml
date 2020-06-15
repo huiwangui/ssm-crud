@@ -63,7 +63,7 @@
     Employee selectByPrimaryKeyWithDept(Integer empId);
    -->
   
- <select id="selectByExampleWithDept" parameterType="com.hxjc.bdss.ss.model.Employee" resultMap="WithDeptResultMap">
+ <select id="selectByExampleWithDept" parameterType="employee" resultMap="WithDeptResultMap">
     select
     <if test="distinct">
       distinct
@@ -77,7 +77,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKeyWithDept" parameterType="com.hxjc.bdss.ss.model.Employee" resultMap="WithDeptResultMap">
+  <select id="selectByPrimaryKeyWithDept" parameterType="employee" resultMap="WithDeptResultMap">
   	select 
     <include refid="WithDept_Column_List" />
     from tbl_emp e LEFT JOIN tbl_dept d on e.d_id = d.dept_id
@@ -85,13 +85,13 @@
   </select>
   
    
-  <insert id="insert" parameterType="com.hxjc.bdss.ss.model.Employee">
+  <insert id="insert" parameterType="employee">
     insert into tbl_emp (emp_id, emp_name, gender, 
       email, d_id)
     values (#{empId,jdbcType=INTEGER}, #{empName,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, 
       #{email,jdbcType=VARCHAR}, #{dId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.hxjc.bdss.ss.model.Employee">
+  <insert id="insertSelective" parameterType="employee">
     insert into tbl_emp
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="empId != null">

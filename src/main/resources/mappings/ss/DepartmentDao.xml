@@ -66,7 +66,7 @@
   <sql id="Base_Column_List">
     dept_id, dept_name
   </sql>
-  <select id="selectByExample" parameterType="com.hxjc.bdss.ss.model.Department" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="department" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -80,27 +80,27 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tbl_dept
     where dept_id = #{deptId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="Integer">
     delete from tbl_dept
     where dept_id = #{deptId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.hxjc.bdss.ss.model.Department">
+  <delete id="deleteByExample" parameterType="department">
     delete from tbl_dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.hxjc.bdss.ss.model.Department">
+  <insert id="insert" parameterType="department">
     insert into tbl_dept (dept_id, dept_name)
     values (#{deptId,jdbcType=INTEGER}, #{deptName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hxjc.bdss.ss.model.Department">
+  <insert id="insertSelective" parameterType="department">
     insert into tbl_dept
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="deptId != null">
